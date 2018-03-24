@@ -13,6 +13,7 @@
 		926952ED2066EAF500E5BE47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 926952EC2066EAF500E5BE47 /* Assets.xcassets */; };
 		926952F02066EAF500E5BE47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 926952EE2066EAF500E5BE47 /* LaunchScreen.storyboard */; };
 		926952F32066EAF500E5BE47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 926952F22066EAF500E5BE47 /* main.m */; };
+		926952FA206710AA00E5BE47 /* WeatherGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 926952F9206710AA00E5BE47 /* WeatherGetter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		926952EF2066EAF500E5BE47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		926952F12066EAF500E5BE47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		926952F22066EAF500E5BE47 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		926952F9206710AA00E5BE47 /* WeatherGetter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherGetter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				926952E32066EAF500E5BE47 /* AppDelegate.h */,
 				926952E42066EAF500E5BE47 /* AppDelegate.m */,
 				926952E62066EAF500E5BE47 /* ViewController.h */,
+				926952F9206710AA00E5BE47 /* WeatherGetter.m */,
 				926952E72066EAF500E5BE47 /* ViewController.m */,
 				926952E92066EAF500E5BE47 /* Main.storyboard */,
 				926952EC2066EAF500E5BE47 /* Assets.xcassets */,
@@ -143,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				926952E82066EAF500E5BE47 /* ViewController.m in Sources */,
+				926952FA206710AA00E5BE47 /* WeatherGetter.m in Sources */,
 				926952F32066EAF500E5BE47 /* main.m in Sources */,
 				926952E52066EAF500E5BE47 /* AppDelegate.m in Sources */,
 			);
