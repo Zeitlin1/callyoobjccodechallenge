@@ -44,10 +44,17 @@
 
     if ([self.searchTextField.text  isEqual: @""]) {
         NSLog(@"text empty");
-//        encodedCityString = [defaultCity stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        
+        encodedCityString = [defaultCity stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+//        NSLog(@"escapedString: %@", encodedCityString);
+        
+//        encodedCityString = [defaultCity stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     } else {
         NSLog(@"Button Pushed & text not empty");
-////        encodedCityString = [self.searchTextField.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        encodedCityString = [self.searchTextField.text stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+//        NSLog(@"escapedString: %@", encodedCityString);
+        
 //        encodedCityString = [self.searchTextField.text stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     }
     
@@ -60,18 +67,12 @@
     /// replace this with valid API key
     NSString *apiKey = @"fc490ca55b05ce6da7b75de78fc86cc6";
     
-    NSString *urlString = [NSString stringWithFormat:@"%@%@%@%@%@",
-                           baseURL,
-                           queryParameter,
-                           encodedCityString,
-                           appIDParameter,
-                           apiKey];
-        
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@%@%@", baseURL, queryParameter, encodedCityString, appIDParameter, apiKey];
+    
     NSURL *newURL = [NSURL URLWithString:urlString];
-        
-        NSLog(urlString);
-        //        let newURLRequst = URLRequest(url: newURL!)
-        
+    
+//                let newURLRequst = URLRequest(url: newURL!)
+    
         /// this should be a url request
         //    return encodedCityString;
     
