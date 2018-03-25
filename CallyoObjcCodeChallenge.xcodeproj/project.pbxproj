@@ -7,16 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92220D2D20682A7D00062F58 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 92220D2C20682A7D00062F58 /* Reachability.m */; };
 		926952E52066EAF500E5BE47 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 926952E42066EAF500E5BE47 /* AppDelegate.m */; };
 		926952E82066EAF500E5BE47 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 926952E72066EAF500E5BE47 /* ViewController.m */; };
 		926952EB2066EAF500E5BE47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 926952E92066EAF500E5BE47 /* Main.storyboard */; };
 		926952ED2066EAF500E5BE47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 926952EC2066EAF500E5BE47 /* Assets.xcassets */; };
 		926952F02066EAF500E5BE47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 926952EE2066EAF500E5BE47 /* LaunchScreen.storyboard */; };
 		926952F32066EAF500E5BE47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 926952F22066EAF500E5BE47 /* main.m */; };
-		926952FA206710AA00E5BE47 /* WeatherGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 926952F9206710AA00E5BE47 /* WeatherGetter.m */; };
+		A9B4E5BE55FB8034C1ECE20A /* libPods-CallyoObjcCodeChallenge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C391CB2E3D3D7811E651D587 /* libPods-CallyoObjcCodeChallenge.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3981028BF235AE9F3E788868 /* Pods-CallyoObjcCodeChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CallyoObjcCodeChallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CallyoObjcCodeChallenge/Pods-CallyoObjcCodeChallenge.debug.xcconfig"; sourceTree = "<group>"; };
+		92220D2B20682A7D00062F58 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		92220D2C20682A7D00062F58 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		926952E02066EAF500E5BE47 /* CallyoObjcCodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CallyoObjcCodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		926952E32066EAF500E5BE47 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		926952E42066EAF500E5BE47 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -27,7 +31,8 @@
 		926952EF2066EAF500E5BE47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		926952F12066EAF500E5BE47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		926952F22066EAF500E5BE47 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		926952F9206710AA00E5BE47 /* WeatherGetter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherGetter.m; sourceTree = "<group>"; };
+		BD4A0778F36DADA4120D25DA /* Pods-CallyoObjcCodeChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CallyoObjcCodeChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-CallyoObjcCodeChallenge/Pods-CallyoObjcCodeChallenge.release.xcconfig"; sourceTree = "<group>"; };
+		C391CB2E3D3D7811E651D587 /* libPods-CallyoObjcCodeChallenge.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CallyoObjcCodeChallenge.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9B4E5BE55FB8034C1ECE20A /* libPods-CallyoObjcCodeChallenge.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +52,8 @@
 			children = (
 				926952E22066EAF500E5BE47 /* CallyoObjcCodeChallenge */,
 				926952E12066EAF500E5BE47 /* Products */,
+				9F2A6DBDC9B617D540FEF183 /* Pods */,
+				9595E08BC221F94B33EDABE6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,8 +71,9 @@
 				926952E32066EAF500E5BE47 /* AppDelegate.h */,
 				926952E42066EAF500E5BE47 /* AppDelegate.m */,
 				926952E62066EAF500E5BE47 /* ViewController.h */,
-				926952F9206710AA00E5BE47 /* WeatherGetter.m */,
 				926952E72066EAF500E5BE47 /* ViewController.m */,
+				92220D2B20682A7D00062F58 /* Reachability.h */,
+				92220D2C20682A7D00062F58 /* Reachability.m */,
 				926952E92066EAF500E5BE47 /* Main.storyboard */,
 				926952EC2066EAF500E5BE47 /* Assets.xcassets */,
 				926952EE2066EAF500E5BE47 /* LaunchScreen.storyboard */,
@@ -74,6 +83,23 @@
 			path = CallyoObjcCodeChallenge;
 			sourceTree = "<group>";
 		};
+		9595E08BC221F94B33EDABE6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C391CB2E3D3D7811E651D587 /* libPods-CallyoObjcCodeChallenge.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9F2A6DBDC9B617D540FEF183 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3981028BF235AE9F3E788868 /* Pods-CallyoObjcCodeChallenge.debug.xcconfig */,
+				BD4A0778F36DADA4120D25DA /* Pods-CallyoObjcCodeChallenge.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -81,9 +107,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 926952F62066EAF500E5BE47 /* Build configuration list for PBXNativeTarget "CallyoObjcCodeChallenge" */;
 			buildPhases = (
+				07F2222D91D393D4AB923328 /* [CP] Check Pods Manifest.lock */,
 				926952DC2066EAF500E5BE47 /* Sources */,
 				926952DD2066EAF500E5BE47 /* Frameworks */,
 				926952DE2066EAF500E5BE47 /* Resources */,
+				63A8B1B7BEC06E324D792BAC /* [CP] Embed Pods Frameworks */,
+				9FAB049647D4FA56189AA86C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -140,14 +169,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		07F2222D91D393D4AB923328 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		63A8B1B7BEC06E324D792BAC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CallyoObjcCodeChallenge/Pods-CallyoObjcCodeChallenge-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9FAB049647D4FA56189AA86C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CallyoObjcCodeChallenge/Pods-CallyoObjcCodeChallenge-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		926952DC2066EAF500E5BE47 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				926952E82066EAF500E5BE47 /* ViewController.m in Sources */,
-				926952FA206710AA00E5BE47 /* WeatherGetter.m in Sources */,
 				926952F32066EAF500E5BE47 /* main.m in Sources */,
+				92220D2D20682A7D00062F58 /* Reachability.m in Sources */,
 				926952E52066EAF500E5BE47 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,28 +357,35 @@
 		};
 		926952F72066EAF500E5BE47 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3981028BF235AE9F3E788868 /* Pods-CallyoObjcCodeChallenge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 92AXCX858Q;
 				INFOPLIST_FILE = CallyoObjcCodeChallenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CallyoObjcCodeChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		926952F82066EAF500E5BE47 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD4A0778F36DADA4120D25DA /* Pods-CallyoObjcCodeChallenge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 92AXCX858Q;
 				INFOPLIST_FILE = CallyoObjcCodeChallenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CallyoObjcCodeChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

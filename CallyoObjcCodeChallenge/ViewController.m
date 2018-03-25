@@ -8,6 +8,10 @@
 
 #import "ViewController.h"
 
+#import <AFNetworking.h>
+
+#import "Reachability.h"
+
 @interface ViewController ()
 
 @end
@@ -17,6 +21,17 @@
 {
     NSMutableArray *weatherData;
 }
+
+    NSString *defaultCity = @"New York";
+
+    NSString *baseURL = @"https://api.openweathermap.org/data/2.5/forecast?";
+
+    NSString *queryParameter = @"q=";
+
+    NSString *appIDParameter = @"&appid=";
+
+    /// replace this with valid API key
+    NSString *apiKey = @"fc490ca55b05ce6da7b75de78fc86cc6";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,8 +54,6 @@
 - (IBAction)searchButtonPushed:(UIButton *)sender {
     
     NSString *encodedCityString;
-    
-    NSString *defaultCity = @"New York";
 
     if ([self.searchTextField.text  isEqual: @""]) {
         NSLog(@"text empty");
@@ -58,24 +71,39 @@
 //        encodedCityString = [self.searchTextField.text stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     }
     
-    NSString *baseURL = @"https://api.openweathermap.org/data/2.5/forecast?";
-    
-    NSString *queryParameter = @"q=";
-    
-    NSString *appIDParameter = @"&appid=";
-    
-    /// replace this with valid API key
-    NSString *apiKey = @"fc490ca55b05ce6da7b75de78fc86cc6";
-    
-    NSString *urlString = [NSString stringWithFormat:@"%@%@%@%@%@", baseURL, queryParameter, encodedCityString, appIDParameter, apiKey];
-    
-    NSURL *newURL = [NSURL URLWithString:urlString];
-    
-//                let newURLRequst = URLRequest(url: newURL!)
-    
-        /// this should be a url request
-        //    return encodedCityString;
-    
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+
+    if (networkStatus == NotReachable) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Alert!" message:@"No network connection found.  Please check your internet connection" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}];
+        [alertController addAction:okAction];
+
+        [self.presentViewController:alertController animated:YES completion:nil];
+    } else {
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+
+        [params setObject:@"INDIA" forKey:@"address"];
+        [params setObject:@"para" forKey:@"key"];
+
+        // if your api is right
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject: @"application/json"];
+
+        NSString *urlString = [NSString stringWithFormat:@"%@%@%@%@%@", baseURL, queryParameter, encodedCityString, appIDParameter, apiKey];
+        
+        NSLog(urlString);
+        
+        [manager POST:urlString parameters:params success:^(NSURLSessionTask *task, id responseObject) {
+            //        [manager POST:api parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+            NSLog(@"JSON: %@", responseObject);
+            NSLog(@"result");
+        }
+              failure:^(NSURLSessionTask *operation, NSError *error)
+         { NSLog(@"ERROR: %@", error); }];
+    }
+
     self.navigationItem.title = self.searchTextField.text;
    
 }
