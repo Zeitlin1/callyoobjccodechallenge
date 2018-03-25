@@ -38,23 +38,44 @@
 
 - (IBAction)searchButtonPushed:(UIButton *)sender {
     
+    NSString *encodedCityString;
+    
+    NSString *defaultCity = @"New York";
+
     if ([self.searchTextField.text  isEqual: @""]) {
-       
         NSLog(@"text empty");
-        
-        static NSString *defaultString = @"New York";
-        
-        
+//        encodedCityString = [defaultCity stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     } else {
-        
-//        self.searchTextField.text
-        
-         NSLog(@"Button Pushed & text not empty");
-        
+        NSLog(@"Button Pushed & text not empty");
+////        encodedCityString = [self.searchTextField.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//        encodedCityString = [self.searchTextField.text stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     }
     
-    self.navigationItem.title = self.searchTextField.text;
+    NSString *baseURL = @"https://api.openweathermap.org/data/2.5/forecast?";
     
+    NSString *queryParameter = @"q=";
+    
+    NSString *appIDParameter = @"&appid=";
+    
+    /// replace this with valid API key
+    NSString *apiKey = @"fc490ca55b05ce6da7b75de78fc86cc6";
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@%@%@",
+                           baseURL,
+                           queryParameter,
+                           encodedCityString,
+                           appIDParameter,
+                           apiKey];
+        
+    NSURL *newURL = [NSURL URLWithString:urlString];
+        
+        NSLog(urlString);
+        //        let newURLRequst = URLRequest(url: newURL!)
+        
+        /// this should be a url request
+        //    return encodedCityString;
+    
+    self.navigationItem.title = self.searchTextField.text;
    
 }
 
@@ -74,7 +95,6 @@
     
     return cell;
 }
-
 
 
 @end
