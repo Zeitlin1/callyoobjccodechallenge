@@ -16,6 +16,8 @@
 
 #import "WeatherTableViewCell.h"
 
+#include <math.h>
+
 @interface ViewController ()
 
 @end
@@ -249,7 +251,9 @@
     
     double far = (dVal * 1.8) - 459.67;
     
-    NSNumber *myDoubleNumber = [NSNumber numberWithDouble:far];
+    int roundInt = (int)ceil(far);
+    
+    NSNumber *myDoubleNumber = [NSNumber numberWithDouble:roundInt];
     
     NSString *numberString = [myDoubleNumber stringValue];
     
