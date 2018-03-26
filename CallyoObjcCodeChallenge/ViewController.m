@@ -24,9 +24,7 @@
 
 @implementation ViewController
 
-//{
     NSMutableArray *weatherData;
-//}
 
     NSString *defaultCity = @"New York";
 
@@ -45,12 +43,7 @@
      weatherData = [[NSMutableArray alloc]init];
     
     self.navigationItem.title = @"Find Your Local Weather";
-    
-//     @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini",
-    
-//    weatherData = [NSMutableArray arrayWithObjects:@"Egg Benedict", nil];
-    // Do any additional setup after loading the view, typically from a nib.
-    
+
     _weatherTableView.delegate = self;
     
     _weatherTableView.dataSource = self;
@@ -62,23 +55,22 @@
 }
 
 - (IBAction)searchButtonPushed:(UIButton *)sender {
-    
+    //Mark: when the user enters a name the api will return the weather forecase for the given search term.  If no input is typed the search will default to "New York".
     NSString *encodedCityString;
 
     if ([self.searchTextField.text  isEqual: @""]) {
-        NSLog(@"text empty");
         
         self.navigationItem.title = defaultCity;
         
         encodedCityString = [defaultCity stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
     } else {
-        NSLog(@"Button Pushed & text not empty");
         
         self.navigationItem.title = self.searchTextField.text;
         
         encodedCityString = [self.searchTextField.text stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
     }
     
+    //Mark: Before each api search, the app will check that the network is available.
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
 
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
@@ -118,8 +110,6 @@
          { NSLog(@"ERROR: %@", error); }];
     }
 
-    
-   
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -131,42 +121,31 @@
     if (cell == nil) {
         cell = [[WeatherTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
-    
+    //Mark: Each object will be help as a JSON object in the weatherData array and parsed as needed.
     NSDictionary *forecast = [weatherData objectAtIndex:indexPath.row];
     
-        NSNumber *time = forecast[@"dt"];
-    
-    NSDictionary *main = forecast[@"main"];
-    
-        NSNumber *humidity = main[@"humidity"];
-    
-        NSNumber *min = main[@"temp_min"];
+    NSNumber *time = forecast[@"dt"];
 
-        NSNumber *max = main[@"temp_max"];
+    NSDictionary *main = forecast[@"main"];
+
+    NSNumber *humidity = main[@"humidity"];
+
+    NSNumber *min = main[@"temp_min"];
+
+    NSNumber *max = main[@"temp_max"];
 
     NSArray *weather = forecast[@"weather"];
 
     NSDictionary *weatherDetail = weather[0];
     
-        NSString *longDescription = weatherDetail[@"description"];
+    NSString *icon = weatherDetail[@"icon"];
 
-        NSString *icon = weatherDetail[@"icon"];
-    
-        NSString *shortDescription = weatherDetail[@"main"];
-    
-//    NSLog(@"humidity: %@", humidity);
-//    NSLog(@"min: %@", min);
-//    NSLog(@"max: %@", max);
-//    NSLog(@"longDescription: %@", longDescription);
-//    NSLog(@"shortDescription: %@", shortDescription);
-//    NSLog(@"icon: %@", icon);
-//    NSLog(@"time: %@", time);
+    NSString *shortDescription = weatherDetail[@"main"];
     
     cell.textLabel.text = [self convertDTtoShortTime:time];
-//    cell.timeLabel.text = [self convertDTtoTime:time];
     cell.tempHighLabel.text = [self convertFromKelvinToF: max];
     cell.tempLowLabel.text = [self convertFromKelvinToF: min];
-    cell.humidityLabel.text = [humidity stringValue];
+    cell.humidityLabel.text = [NSString stringWithFormat:@"%@ %@", @"Hum.", [humidity stringValue]];
     cell.descriptionLabel.text = shortDescription;
     cell.imageView.image = [self returnIcon:icon];
     
@@ -175,17 +154,15 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Make sure your segue name in storyboard is the same as this line
+    
+    //Mark: when a user selects a city's forecast, they are taken to a detail screen that provides more information on the particular forecast they have chosen.
     if ([[segue identifier] isEqualToString:@"weatherDetailSegue"])
     {
-        // Get reference to the destination view controller
         DetailViewController *dest = [segue destinationViewController];
         
         NSIndexPath *indexPath = [_weatherTableView indexPathForSelectedRow];
         
         dest.view.backgroundColor = UIColor.whiteColor;
-        
-//        NSLog(@"%@", indexPath);
         
         NSDictionary *forecast = [weatherData objectAtIndex:indexPath.row];
         
@@ -207,17 +184,24 @@
         
         NSString *icon = weatherDetail[@"icon"];
         
-        dest.tempHighLabel.text     = [self convertFromKelvinToF: max];
-        dest.tempLowLabel.text      = [self convertFromKelvinToF: min];
-        dest.humidityLabel.text     = [humidity stringValue];
+        dest.tempHighLabel.text     = [NSString stringWithFormat:@"%@ %@", @"High Temp ", [self convertFromKelvinToF: max]];
+        dest.tempLowLabel.text      = [NSString stringWithFormat:@"%@ %@", @"Low Temp ", [self convertFromKelvinToF: min]];
+        dest.humidityLabel.text     = [NSString stringWithFormat:@"%@ %@", @"Humidity", [humidity stringValue]];
         dest.descriptionLabel.text  = longDescription;
         dest.timeLabel.text         = [self convertDTtoLongTime:time];
         dest.iconView.image         = [self returnIcon:icon];
         
-//        NSLog(@"longDescription: %@", [self convertDTtoTime:time]);
+        //Mark:  the title of the destination view will be set to either the user's input text or the default city if none was typed in.
+        if ([self.searchTextField.text isEqual: @""]) {
+        dest.navigationItem.title = defaultCity;
+        } else {
+        dest.navigationItem.title = self.searchTextField.text;
+        }
         
     }
 }
+
+//Mark: Conversion utility functions
 
 - (NSString *)convertDTtoLongTime:(NSNumber *)timeNumber {
     
@@ -228,9 +212,9 @@
     NSString *dateString = [NSDateFormatter localizedStringFromDate:epochNSDate
                                                           dateStyle:NSDateFormatterShortStyle 
                                                           timeStyle:NSDateFormatterFullStyle];
-    NSLog(@"dateString: %@", dateString);
     return dateString;
 }
+
 
 - (NSString *)convertDTtoShortTime:(NSNumber *)timeNumber {
     
@@ -241,7 +225,6 @@
     NSString *dateString = [NSDateFormatter localizedStringFromDate:epochNSDate
                                                           dateStyle:NSDateFormatterShortStyle
                                                           timeStyle:NSDateFormatterShortStyle];
-    NSLog(@"dateString: %@", dateString);
     return dateString;
 }
 
@@ -263,7 +246,7 @@
 - (UIImage *)returnIcon:(NSString *)iconCode {
     
     UIImage *icon;
-    // ... code to calculate the number of characters ...
+    
     if ([iconCode  isEqual: @"01d"]) {
         icon = [UIImage imageNamed:@"01d.png"];
     } else if ([iconCode  isEqual: @"02d"]) {
