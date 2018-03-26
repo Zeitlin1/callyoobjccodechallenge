@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9203496D2068969000D6AC5C /* WeatherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9203496C2068969000D6AC5C /* WeatherTableViewCell.m */; };
 		92220D2D20682A7D00062F58 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 92220D2C20682A7D00062F58 /* Reachability.m */; };
 		9264A0AF20688CEC00FAF90C /* 01d.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264A0A620688CEB00FAF90C /* 01d.png */; };
 		9264A0B020688CEC00FAF90C /* 03d.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264A0A720688CEB00FAF90C /* 03d.png */; };
@@ -38,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		3981028BF235AE9F3E788868 /* Pods-CallyoObjcCodeChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CallyoObjcCodeChallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CallyoObjcCodeChallenge/Pods-CallyoObjcCodeChallenge.debug.xcconfig"; sourceTree = "<group>"; };
+		9203496B2068969000D6AC5C /* WeatherTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherTableViewCell.h; sourceTree = "<group>"; };
+		9203496C2068969000D6AC5C /* WeatherTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherTableViewCell.m; sourceTree = "<group>"; };
 		92220D2B20682A7D00062F58 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		92220D2C20682A7D00062F58 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		9264A0A620688CEB00FAF90C /* 01d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01d.png; sourceTree = "<group>"; };
@@ -132,6 +135,8 @@
 				92220D2B20682A7D00062F58 /* Reachability.h */,
 				92C4F8D42068457D003A7035 /* DetailViewController.h */,
 				92C4F8D52068457D003A7035 /* DetailViewController.m */,
+				9203496B2068969000D6AC5C /* WeatherTableViewCell.h */,
+				9203496C2068969000D6AC5C /* WeatherTableViewCell.m */,
 				92220D2C20682A7D00062F58 /* Reachability.m */,
 				926952E92066EAF500E5BE47 /* Main.storyboard */,
 				926952EC2066EAF500E5BE47 /* Assets.xcassets */,
@@ -301,6 +306,7 @@
 			files = (
 				92C4F8D62068457D003A7035 /* DetailViewController.m in Sources */,
 				926952E82066EAF500E5BE47 /* ViewController.m in Sources */,
+				9203496D2068969000D6AC5C /* WeatherTableViewCell.m in Sources */,
 				926952F32066EAF500E5BE47 /* main.m in Sources */,
 				92220D2D20682A7D00062F58 /* Reachability.m in Sources */,
 				926952E52066EAF500E5BE47 /* AppDelegate.m in Sources */,

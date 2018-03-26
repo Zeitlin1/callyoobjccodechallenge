@@ -1,5 +1,5 @@
 //
-//  DetailViewController.h
+//  WeatherTableViewCell.h
 //  CallyoObjcCodeChallenge
 //
 //  Created by Anthony on 3/25/18.
@@ -8,13 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailViewController : UIViewController
+@interface WeatherTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *tempHighLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tempLowLabel;
 @property (weak, nonatomic) IBOutlet UILabel *humidityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *iconView;
 
 @end

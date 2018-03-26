@@ -15,9 +15,10 @@
 @implementation DetailViewController
 
 @synthesize tempLowLabel;
+@synthesize tempHighLabel;
 @synthesize humidityLabel;
-@synthesize windLabel;
 @synthesize descriptionLabel;
+@synthesize timeLabel;
 @synthesize iconView;
 
 - (void)viewDidLoad {

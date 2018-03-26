@@ -14,6 +14,8 @@
 
 #import "DetailViewController.h"
 
+#import "WeatherTableViewCell.h"
+
 @interface ViewController ()
 
 @end
@@ -64,9 +66,13 @@
     if ([self.searchTextField.text  isEqual: @""]) {
         NSLog(@"text empty");
         
+        self.navigationItem.title = defaultCity;
+        
         encodedCityString = [defaultCity stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
     } else {
         NSLog(@"Button Pushed & text not empty");
+        
+        self.navigationItem.title = self.searchTextField.text;
         
         encodedCityString = [self.searchTextField.text stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
     }
@@ -89,52 +95,14 @@
         [params setObject:@"INDIA" forKey:@"address"];
         [params setObject:@"para" forKey:@"key"];
 
-        // if your api is right
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject: @"application/json"];
 
         NSString *urlString = [NSString stringWithFormat:@"%@%@%@%@%@", baseURL, queryParameter, encodedCityString, appIDParameter, apiKey];
         
-//        NSLog(urlString);
-        
         [manager POST:urlString parameters:params success:^(NSURLSessionTask *task, id responseObject) {
             
-//            NSLog(@"JSON: %@", responseObject);
-//            NSLog(@"result");
+            [weatherData removeAllObjects];
             
-//            clouds =     {
-//                all = 56;
-//            };
-//            dt = 1522389600;
-//            "dt_txt" = "2018-03-30 06:00:00";
-//            main =     {
-//                "grnd_level" = "1026.28";
-//                humidity = 92;
-//                pressure = "1026.28";
-//                "sea_level" = "1029.65";
-//                temp = "280.269";
-//                "temp_kf" = 0;
-//                "temp_max" = "280.269";
-//                "temp_min" = "280.269";
-//            };
-//            rain =     {
-//            };
-//            sys =     {
-//                pod = n;
-//            };
-//            weather =     (
-//                           {
-//                               description = "broken clouds";
-//                               icon = 04n;
-//                               id = 803;
-//                               main = Clouds;
-//                           }
-//                           );
-//            wind =     {
-//                deg = "279.509";
-//                speed = "0.91";
-//            };
-//        }
-         
             for (NSDictionary* currentDictionary in responseObject[@"list"]) {
 
                 [weatherData addObject: currentDictionary];
@@ -148,7 +116,7 @@
          { NSLog(@"ERROR: %@", error); }];
     }
 
-    self.navigationItem.title = self.searchTextField.text;
+    
    
 }
 
@@ -156,10 +124,10 @@
 {
     static NSString *simpleTableIdentifier = @"SimpleTableItem";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    WeatherTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+        cell = [[WeatherTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
     NSDictionary *forecast = [weatherData objectAtIndex:indexPath.row];
@@ -184,55 +152,21 @@
     
         NSString *shortDescription = weatherDetail[@"main"];
     
-    NSLog(@"humidity: %@", humidity);
-    NSLog(@"min: %@", min);
-    NSLog(@"max: %@", max);
-    NSLog(@"longDescription: %@", longDescription);
-    NSLog(@"shortDescription: %@", shortDescription);
-    NSLog(@"icon: %@", icon);
-    NSLog(@"time: %@", time);
+//    NSLog(@"humidity: %@", humidity);
+//    NSLog(@"min: %@", min);
+//    NSLog(@"max: %@", max);
+//    NSLog(@"longDescription: %@", longDescription);
+//    NSLog(@"shortDescription: %@", shortDescription);
+//    NSLog(@"icon: %@", icon);
+//    NSLog(@"time: %@", time);
     
-        cell.textLabel.text = [time stringValue];
-    
-    if ([icon  isEqual: @"01d"]) {
-        cell.imageView.image = [UIImage imageNamed:@"01d.png"];
-    } else if ([icon  isEqual: @"02d"]) {
-        cell.imageView.image = [UIImage imageNamed:@"02d.png"];
-    } else if ([icon  isEqual: @"03d"]) {
-        cell.imageView.image = [UIImage imageNamed:@"03d.png"];
-    } else if ([icon  isEqual: @"04d"]) {
-        cell.imageView.image = [UIImage imageNamed:@"04d.png"];
-    } else if ([icon  isEqual: @"09d"]) {
-        cell.imageView.image = [UIImage imageNamed:@"09d.png"];
-    } else if ([icon  isEqual: @"10d"]) {
-        cell.imageView.image = [UIImage imageNamed:@"10d.png"];
-    } else if ([icon  isEqual: @"11d"]) {
-        cell.imageView.image = [UIImage imageNamed:@"11d.png"];
-    } else if ([icon  isEqual: @"13d"]) {
-        cell.imageView.image = [UIImage imageNamed:@"13d.png"];
-    } else if ([icon  isEqual: @"50d"]) {
-        cell.imageView.image = [UIImage imageNamed:@"50d.png"];
-    } else if ([icon  isEqual: @"01n"]) {
-        cell.imageView.image = [UIImage imageNamed:@"01n.png"];
-    } else if ([icon  isEqual: @"02n"]) {
-        cell.imageView.image = [UIImage imageNamed:@"02n.png"];
-    } else if ([icon  isEqual: @"03n"]) {
-        cell.imageView.image = [UIImage imageNamed:@"03n.png"];
-    } else if ([icon  isEqual: @"04n"]) {
-        cell.imageView.image = [UIImage imageNamed:@"04n.png"];
-    } else if ([icon  isEqual: @"09n"]) {
-        cell.imageView.image = [UIImage imageNamed:@"09n.png"];
-    } else if ([icon  isEqual: @"10n"]) {
-        cell.imageView.image = [UIImage imageNamed:@"10n.png"];
-    } else if ([icon  isEqual: @"11n"]) {
-        cell.imageView.image = [UIImage imageNamed:@"11n.png"];
-    } else if ([icon  isEqual: @"13n"]) {
-        cell.imageView.image = [UIImage imageNamed:@"13n.png"];
-    } else if ([icon  isEqual: @"50n"]) {
-        cell.imageView.image = [UIImage imageNamed:@"50n.png"];
-    } else {
-        cell.imageView.image = nil;
-    }
+    cell.textLabel.text = [self convertDTtoShortTime:time];
+//    cell.timeLabel.text = [self convertDTtoTime:time];
+    cell.tempHighLabel.text = [self convertFromKelvinToF: max];
+    cell.tempLowLabel.text = [self convertFromKelvinToF: min];
+    cell.humidityLabel.text = [humidity stringValue];
+    cell.descriptionLabel.text = shortDescription;
+    cell.imageView.image = [self returnIcon:icon];
     
     return cell;
 }
@@ -247,18 +181,124 @@
         
         NSIndexPath *indexPath = [_weatherTableView indexPathForSelectedRow];
         
-        dest.view.backgroundColor = UIColor.greenColor;
+        dest.view.backgroundColor = UIColor.whiteColor;
         
-        NSLog(@"%@", indexPath);
+//        NSLog(@"%@", indexPath);
         
-        dest.tempHighLabel.text     = [weatherData objectAtIndex:indexPath.row];
-        dest.tempLowLabel.text      = [weatherData objectAtIndex:indexPath.row];
-        dest.humidityLabel.text     = [weatherData objectAtIndex:indexPath.row];
-        dest.windLabel.text         = [weatherData objectAtIndex:indexPath.row];
-        dest.descriptionLabel.text  = [weatherData objectAtIndex:indexPath.row];
-        dest.iconView.image         = [UIImage imageNamed:@"cloudy.png"];
+        NSDictionary *forecast = [weatherData objectAtIndex:indexPath.row];
+        
+        NSNumber *time = forecast[@"dt"];
+        
+        NSDictionary *main = forecast[@"main"];
+        
+        NSNumber *humidity = main[@"humidity"];
+        
+        NSNumber *min = main[@"temp_min"];
+        
+        NSNumber *max = main[@"temp_max"];
+        
+        NSArray *weather = forecast[@"weather"];
+        
+        NSDictionary *weatherDetail = weather[0];
+        
+        NSString *longDescription = weatherDetail[@"description"];
+        
+        NSString *icon = weatherDetail[@"icon"];
+        
+        dest.tempHighLabel.text     = [self convertFromKelvinToF: max];
+        dest.tempLowLabel.text      = [self convertFromKelvinToF: min];
+        dest.humidityLabel.text     = [humidity stringValue];
+        dest.descriptionLabel.text  = longDescription;
+        dest.timeLabel.text         = [self convertDTtoLongTime:time];
+        dest.iconView.image         = [self returnIcon:icon];
+        
+//        NSLog(@"longDescription: %@", [self convertDTtoTime:time]);
         
     }
 }
+
+- (NSString *)convertDTtoLongTime:(NSNumber *)timeNumber {
+    
+    double dtVal = [timeNumber doubleValue];
+    /// convert from number to date
+    NSDate *epochNSDate = [[NSDate alloc] initWithTimeIntervalSince1970:dtVal];
+    
+    NSString *dateString = [NSDateFormatter localizedStringFromDate:epochNSDate
+                                                          dateStyle:NSDateFormatterShortStyle 
+                                                          timeStyle:NSDateFormatterFullStyle];
+    NSLog(@"dateString: %@", dateString);
+    return dateString;
+}
+
+- (NSString *)convertDTtoShortTime:(NSNumber *)timeNumber {
+    
+    double dtVal = [timeNumber doubleValue];
+    /// convert from number to date
+    NSDate *epochNSDate = [[NSDate alloc] initWithTimeIntervalSince1970:dtVal];
+    
+    NSString *dateString = [NSDateFormatter localizedStringFromDate:epochNSDate
+                                                          dateStyle:NSDateFormatterShortStyle
+                                                          timeStyle:NSDateFormatterShortStyle];
+    NSLog(@"dateString: %@", dateString);
+    return dateString;
+}
+
+- (NSString *)convertFromKelvinToF:(NSNumber *)kelvins {
+
+    double dVal = [kelvins doubleValue];
+    
+    double far = (dVal * 1.8) - 459.67;
+    
+    NSNumber *myDoubleNumber = [NSNumber numberWithDouble:far];
+    
+    NSString *numberString = [myDoubleNumber stringValue];
+    
+    return numberString;
+}
+
+- (UIImage *)returnIcon:(NSString *)iconCode {
+    
+    UIImage *icon;
+    // ... code to calculate the number of characters ...
+    if ([iconCode  isEqual: @"01d"]) {
+        icon = [UIImage imageNamed:@"01d.png"];
+    } else if ([iconCode  isEqual: @"02d"]) {
+        icon = [UIImage imageNamed:@"02d.png"];
+    } else if ([iconCode  isEqual: @"03d"]) {
+        icon = [UIImage imageNamed:@"03d.png"];
+    } else if ([iconCode  isEqual: @"04d"]) {
+        icon = [UIImage imageNamed:@"04d.png"];
+    } else if ([iconCode  isEqual: @"09d"]) {
+        icon = [UIImage imageNamed:@"09d.png"];
+    } else if ([iconCode  isEqual: @"10d"]) {
+        icon = [UIImage imageNamed:@"10d.png"];
+    } else if ([iconCode  isEqual: @"11d"]) {
+        icon = [UIImage imageNamed:@"11d.png"];
+    } else if ([iconCode  isEqual: @"13d"]) {
+        icon = [UIImage imageNamed:@"13d.png"];
+    } else if ([iconCode  isEqual: @"50d"]) {
+        icon = [UIImage imageNamed:@"50d.png"];
+    } else if ([iconCode  isEqual: @"01n"]) {
+        icon = [UIImage imageNamed:@"01n.png"];
+    } else if ([iconCode  isEqual: @"02n"]) {
+        icon = [UIImage imageNamed:@"02n.png"];
+    } else if ([iconCode  isEqual: @"03n"]) {
+        icon = [UIImage imageNamed:@"03n.png"];
+    } else if ([iconCode  isEqual: @"04n"]) {
+        icon = [UIImage imageNamed:@"04n.png"];
+    } else if ([iconCode  isEqual: @"09n"]) {
+        icon = [UIImage imageNamed:@"09n.png"];
+    } else if ([iconCode  isEqual: @"10n"]) {
+        icon = [UIImage imageNamed:@"10n.png"];
+    } else if ([iconCode  isEqual: @"11n"]) {
+        icon = [UIImage imageNamed:@"11n.png"];
+    } else if ([iconCode  isEqual: @"13n"]) {
+        icon = [UIImage imageNamed:@"13n.png"];
+    } else if ([iconCode  isEqual: @"50n"]) {
+        icon = [UIImage imageNamed:@"50n.png"];
+    }
+    
+    return icon;
+  }
 
 @end
