@@ -12,15 +12,17 @@
 
 #import "Reachability.h"
 
+#import "DetailViewController.h"
+
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
 
-{
+//{
     NSMutableArray *weatherData;
-}
+//}
 
     NSString *defaultCity = @"New York";
 
@@ -36,9 +38,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+     weatherData = [[NSMutableArray alloc]init];
+    
     self.navigationItem.title = @"Find Your Local Weather";
     
-    weatherData = [NSMutableArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini", nil];
+//     @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini",
+    
+//    weatherData = [NSMutableArray arrayWithObjects:@"Egg Benedict", nil];
     // Do any additional setup after loading the view, typically from a nib.
     
     _weatherTableView.delegate = self;
@@ -59,16 +65,10 @@
         NSLog(@"text empty");
         
         encodedCityString = [defaultCity stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-//        NSLog(@"escapedString: %@", encodedCityString);
-        
-//        encodedCityString = [defaultCity stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     } else {
         NSLog(@"Button Pushed & text not empty");
         
         encodedCityString = [self.searchTextField.text stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-//        NSLog(@"escapedString: %@", encodedCityString);
-        
-//        encodedCityString = [self.searchTextField.text stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     }
     
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
@@ -76,11 +76,12 @@
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
 
     if (networkStatus == NotReachable) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Alert!" message:@"No network connection found.  Please check your internet connection" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}];
-        [alertController addAction:okAction];
-
-        [self.presentViewController:alertController animated:YES completion:nil];
+        
+        UIAlertView *alertController = [[UIAlertView alloc]
+                                        initWithTitle:@"Alert" message:@"No network connection found.  Please check your internet connection" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [alertController show];
+        
     } else {
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
@@ -93,12 +94,55 @@
 
         NSString *urlString = [NSString stringWithFormat:@"%@%@%@%@%@", baseURL, queryParameter, encodedCityString, appIDParameter, apiKey];
         
-        NSLog(urlString);
+//        NSLog(urlString);
         
         [manager POST:urlString parameters:params success:^(NSURLSessionTask *task, id responseObject) {
-            //        [manager POST:api parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-            NSLog(@"JSON: %@", responseObject);
-            NSLog(@"result");
+            
+//            NSLog(@"JSON: %@", responseObject);
+//            NSLog(@"result");
+            
+//            clouds =     {
+//                all = 56;
+//            };
+//            dt = 1522389600;
+//            "dt_txt" = "2018-03-30 06:00:00";
+//            main =     {
+//                "grnd_level" = "1026.28";
+//                humidity = 92;
+//                pressure = "1026.28";
+//                "sea_level" = "1029.65";
+//                temp = "280.269";
+//                "temp_kf" = 0;
+//                "temp_max" = "280.269";
+//                "temp_min" = "280.269";
+//            };
+//            rain =     {
+//            };
+//            sys =     {
+//                pod = n;
+//            };
+//            weather =     (
+//                           {
+//                               description = "broken clouds";
+//                               icon = 04n;
+//                               id = 803;
+//                               main = Clouds;
+//                           }
+//                           );
+//            wind =     {
+//                deg = "279.509";
+//                speed = "0.91";
+//            };
+//        }
+         
+            for (NSDictionary* currentDictionary in responseObject[@"list"]) {
+
+                [weatherData addObject: currentDictionary];
+                
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{ [self.weatherTableView reloadData]; });
+            
         }
               failure:^(NSURLSessionTask *operation, NSError *error)
          { NSLog(@"ERROR: %@", error); }];
@@ -118,12 +162,103 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    cell.textLabel.text = [weatherData objectAtIndex:indexPath.row];
+    NSDictionary *forecast = [weatherData objectAtIndex:indexPath.row];
     
-//        NSString *blah = [weatherData objectAtIndex:indexPath.row];
+        NSNumber *time = forecast[@"dt"];
+    
+    NSDictionary *main = forecast[@"main"];
+    
+        NSNumber *humidity = main[@"humidity"];
+    
+        NSNumber *min = main[@"temp_min"];
+
+        NSNumber *max = main[@"temp_max"];
+
+    NSArray *weather = forecast[@"weather"];
+
+    NSDictionary *weatherDetail = weather[0];
+    
+        NSString *longDescription = weatherDetail[@"description"];
+
+        NSString *icon = weatherDetail[@"icon"];
+    
+        NSString *shortDescription = weatherDetail[@"main"];
+    
+    NSLog(@"humidity: %@", humidity);
+    NSLog(@"min: %@", min);
+    NSLog(@"max: %@", max);
+    NSLog(@"longDescription: %@", longDescription);
+    NSLog(@"shortDescription: %@", shortDescription);
+    NSLog(@"icon: %@", icon);
+    NSLog(@"time: %@", time);
+    
+        cell.textLabel.text = [time stringValue];
+    
+    if ([icon  isEqual: @"01d"]) {
+        cell.imageView.image = [UIImage imageNamed:@"01d.png"];
+    } else if ([icon  isEqual: @"02d"]) {
+        cell.imageView.image = [UIImage imageNamed:@"02d.png"];
+    } else if ([icon  isEqual: @"03d"]) {
+        cell.imageView.image = [UIImage imageNamed:@"03d.png"];
+    } else if ([icon  isEqual: @"04d"]) {
+        cell.imageView.image = [UIImage imageNamed:@"04d.png"];
+    } else if ([icon  isEqual: @"09d"]) {
+        cell.imageView.image = [UIImage imageNamed:@"09d.png"];
+    } else if ([icon  isEqual: @"10d"]) {
+        cell.imageView.image = [UIImage imageNamed:@"10d.png"];
+    } else if ([icon  isEqual: @"11d"]) {
+        cell.imageView.image = [UIImage imageNamed:@"11d.png"];
+    } else if ([icon  isEqual: @"13d"]) {
+        cell.imageView.image = [UIImage imageNamed:@"13d.png"];
+    } else if ([icon  isEqual: @"50d"]) {
+        cell.imageView.image = [UIImage imageNamed:@"50d.png"];
+    } else if ([icon  isEqual: @"01n"]) {
+        cell.imageView.image = [UIImage imageNamed:@"01n.png"];
+    } else if ([icon  isEqual: @"02n"]) {
+        cell.imageView.image = [UIImage imageNamed:@"02n.png"];
+    } else if ([icon  isEqual: @"03n"]) {
+        cell.imageView.image = [UIImage imageNamed:@"03n.png"];
+    } else if ([icon  isEqual: @"04n"]) {
+        cell.imageView.image = [UIImage imageNamed:@"04n.png"];
+    } else if ([icon  isEqual: @"09n"]) {
+        cell.imageView.image = [UIImage imageNamed:@"09n.png"];
+    } else if ([icon  isEqual: @"10n"]) {
+        cell.imageView.image = [UIImage imageNamed:@"10n.png"];
+    } else if ([icon  isEqual: @"11n"]) {
+        cell.imageView.image = [UIImage imageNamed:@"11n.png"];
+    } else if ([icon  isEqual: @"13n"]) {
+        cell.imageView.image = [UIImage imageNamed:@"13n.png"];
+    } else if ([icon  isEqual: @"50n"]) {
+        cell.imageView.image = [UIImage imageNamed:@"50n.png"];
+    } else {
+        cell.imageView.image = nil;
+    }
     
     return cell;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"weatherDetailSegue"])
+    {
+        // Get reference to the destination view controller
+        DetailViewController *dest = [segue destinationViewController];
+        
+        NSIndexPath *indexPath = [_weatherTableView indexPathForSelectedRow];
+        
+        dest.view.backgroundColor = UIColor.greenColor;
+        
+        NSLog(@"%@", indexPath);
+        
+        dest.tempHighLabel.text     = [weatherData objectAtIndex:indexPath.row];
+        dest.tempLowLabel.text      = [weatherData objectAtIndex:indexPath.row];
+        dest.humidityLabel.text     = [weatherData objectAtIndex:indexPath.row];
+        dest.windLabel.text         = [weatherData objectAtIndex:indexPath.row];
+        dest.descriptionLabel.text  = [weatherData objectAtIndex:indexPath.row];
+        dest.iconView.image         = [UIImage imageNamed:@"cloudy.png"];
+        
+    }
+}
 
 @end

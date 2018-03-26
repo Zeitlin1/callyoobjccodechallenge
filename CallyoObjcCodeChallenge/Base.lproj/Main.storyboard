@@ -31,7 +31,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="vHC-uS-Q2o" kind="show" id="mg2-sm-Ohz"/>
+                                            <segue destination="vHC-uS-Q2o" kind="show" identifier="weatherDetailSegue" id="mg2-sm-Ohz"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -79,20 +79,77 @@
             </objects>
             <point key="canvasLocation" x="768.79999999999995" y="116.49175412293854"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="9hY-bh-LFB">
             <objects>
-                <viewController id="vHC-uS-Q2o" sceneMemberID="viewController">
+                <viewController id="vHC-uS-Q2o" customClass="DetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uRv-ed-Ofl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="vxT-dc-dkN">
+                                <rect key="frame" x="89" y="142" width="375" height="500.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVh-M6-IDk">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ze8-Ak-uO0">
+                                        <rect key="frame" x="0.0" y="100" width="375" height="100"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6f-Rl-ebD">
+                                        <rect key="frame" x="0.0" y="200" width="375" height="100.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehb-af-PaL">
+                                        <rect key="frame" x="0.0" y="300.5" width="375" height="100"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="muv-od-Lab">
+                                        <rect key="frame" x="0.0" y="400.5" width="375" height="100"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vsa-UM-H4n">
+                                <rect key="frame" x="0.0" y="64" width="375" height="70"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vxT-dc-dkN" firstAttribute="height" secondItem="uRv-ed-Ofl" secondAttribute="height" multiplier="0.75" id="BkK-QQ-0KH"/>
+                            <constraint firstItem="Vsa-UM-H4n" firstAttribute="bottom" secondItem="vxT-dc-dkN" secondAttribute="top" id="Fvl-iM-SUE"/>
+                            <constraint firstItem="Vsa-UM-H4n" firstAttribute="width" secondItem="uRv-ed-Ofl" secondAttribute="width" id="Ni7-qe-19p"/>
+                            <constraint firstItem="Vsa-UM-H4n" firstAttribute="centerX" secondItem="fmR-7G-jQX" secondAttribute="centerX" id="QHi-jn-SCs"/>
+                            <constraint firstItem="vxT-dc-dkN" firstAttribute="bottom" secondItem="fmR-7G-jQX" secondAttribute="bottom" id="WjU-Hw-601"/>
+                            <constraint firstItem="vxT-dc-dkN" firstAttribute="width" secondItem="uRv-ed-Ofl" secondAttribute="width" id="k1h-3c-VGx"/>
+                            <constraint firstItem="vxT-dc-dkN" firstAttribute="centerX" secondItem="fmR-7G-jQX" secondAttribute="centerX" id="zyU-mw-Itm"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fmR-7G-jQX"/>
                     </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="muv-od-Lab" id="Rhs-Qu-On1"/>
+                        <outlet property="humidityLabel" destination="h6f-Rl-ebD" id="wcq-Ox-cDE"/>
+                        <outlet property="iconView" destination="Vsa-UM-H4n" id="bua-vE-JIY"/>
+                        <outlet property="tempHighLabel" destination="zVh-M6-IDk" id="Br7-yU-h4F"/>
+                        <outlet property="tempLowLabel" destination="Ze8-Ak-uO0" id="8Z1-Tu-RkE"/>
+                        <outlet property="windLabel" destination="ehb-af-PaL" id="HZ0-qD-eJ4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KD6-Wc-Z7f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1569" y="116"/>
+            <point key="canvasLocation" x="1568.8" y="115.59220389805098"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ADI-kb-H3n">

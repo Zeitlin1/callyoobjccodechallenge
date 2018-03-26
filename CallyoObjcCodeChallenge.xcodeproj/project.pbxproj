@@ -8,12 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		92220D2D20682A7D00062F58 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 92220D2C20682A7D00062F58 /* Reachability.m */; };
+		9264A0AF20688CEC00FAF90C /* 01d.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264A0A620688CEB00FAF90C /* 01d.png */; };
+		9264A0B020688CEC00FAF90C /* 03d.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264A0A720688CEB00FAF90C /* 03d.png */; };
+		9264A0B120688CEC00FAF90C /* 11d.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264A0A820688CEB00FAF90C /* 11d.png */; };
+		9264A0B220688CEC00FAF90C /* 02d.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264A0A920688CEC00FAF90C /* 02d.png */; };
+		9264A0B320688CEC00FAF90C /* 50d.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264A0AA20688CEC00FAF90C /* 50d.png */; };
+		9264A0B420688CEC00FAF90C /* 13d.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264A0AB20688CEC00FAF90C /* 13d.png */; };
+		9264A0B520688CEC00FAF90C /* 10d.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264A0AC20688CEC00FAF90C /* 10d.png */; };
+		9264A0B620688CEC00FAF90C /* 04d.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264A0AD20688CEC00FAF90C /* 04d.png */; };
+		9264A0B720688CEC00FAF90C /* 09d.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264A0AE20688CEC00FAF90C /* 09d.png */; };
+		9264A0C120688ECA00FAF90C /* 10n.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264A0B820688EC900FAF90C /* 10n.png */; };
+		9264A0C220688ECA00FAF90C /* 04n.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264A0B920688EC900FAF90C /* 04n.png */; };
+		9264A0C320688ECA00FAF90C /* 03n.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264A0BA20688EC900FAF90C /* 03n.png */; };
+		9264A0C420688ECA00FAF90C /* 09n.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264A0BB20688EC900FAF90C /* 09n.png */; };
+		9264A0C520688ECA00FAF90C /* 11n.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264A0BC20688ECA00FAF90C /* 11n.png */; };
+		9264A0C620688ECA00FAF90C /* 50n.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264A0BD20688ECA00FAF90C /* 50n.png */; };
+		9264A0C720688ECA00FAF90C /* 01n.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264A0BE20688ECA00FAF90C /* 01n.png */; };
+		9264A0C820688ECA00FAF90C /* 02n.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264A0BF20688ECA00FAF90C /* 02n.png */; };
+		9264A0C920688ECA00FAF90C /* 13n.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264A0C020688ECA00FAF90C /* 13n.png */; };
 		926952E52066EAF500E5BE47 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 926952E42066EAF500E5BE47 /* AppDelegate.m */; };
 		926952E82066EAF500E5BE47 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 926952E72066EAF500E5BE47 /* ViewController.m */; };
 		926952EB2066EAF500E5BE47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 926952E92066EAF500E5BE47 /* Main.storyboard */; };
 		926952ED2066EAF500E5BE47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 926952EC2066EAF500E5BE47 /* Assets.xcassets */; };
 		926952F02066EAF500E5BE47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 926952EE2066EAF500E5BE47 /* LaunchScreen.storyboard */; };
 		926952F32066EAF500E5BE47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 926952F22066EAF500E5BE47 /* main.m */; };
+		92C4F8D62068457D003A7035 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C4F8D52068457D003A7035 /* DetailViewController.m */; };
 		A9B4E5BE55FB8034C1ECE20A /* libPods-CallyoObjcCodeChallenge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C391CB2E3D3D7811E651D587 /* libPods-CallyoObjcCodeChallenge.a */; };
 /* End PBXBuildFile section */
 
@@ -21,6 +40,24 @@
 		3981028BF235AE9F3E788868 /* Pods-CallyoObjcCodeChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CallyoObjcCodeChallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CallyoObjcCodeChallenge/Pods-CallyoObjcCodeChallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		92220D2B20682A7D00062F58 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		92220D2C20682A7D00062F58 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		9264A0A620688CEB00FAF90C /* 01d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01d.png; sourceTree = "<group>"; };
+		9264A0A720688CEB00FAF90C /* 03d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03d.png; sourceTree = "<group>"; };
+		9264A0A820688CEB00FAF90C /* 11d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 11d.png; sourceTree = "<group>"; };
+		9264A0A920688CEC00FAF90C /* 02d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02d.png; sourceTree = "<group>"; };
+		9264A0AA20688CEC00FAF90C /* 50d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 50d.png; sourceTree = "<group>"; };
+		9264A0AB20688CEC00FAF90C /* 13d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13d.png; sourceTree = "<group>"; };
+		9264A0AC20688CEC00FAF90C /* 10d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10d.png; sourceTree = "<group>"; };
+		9264A0AD20688CEC00FAF90C /* 04d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 04d.png; sourceTree = "<group>"; };
+		9264A0AE20688CEC00FAF90C /* 09d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 09d.png; sourceTree = "<group>"; };
+		9264A0B820688EC900FAF90C /* 10n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10n.png; sourceTree = "<group>"; };
+		9264A0B920688EC900FAF90C /* 04n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 04n.png; sourceTree = "<group>"; };
+		9264A0BA20688EC900FAF90C /* 03n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03n.png; sourceTree = "<group>"; };
+		9264A0BB20688EC900FAF90C /* 09n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 09n.png; sourceTree = "<group>"; };
+		9264A0BC20688ECA00FAF90C /* 11n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 11n.png; sourceTree = "<group>"; };
+		9264A0BD20688ECA00FAF90C /* 50n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 50n.png; sourceTree = "<group>"; };
+		9264A0BE20688ECA00FAF90C /* 01n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01n.png; sourceTree = "<group>"; };
+		9264A0BF20688ECA00FAF90C /* 02n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02n.png; sourceTree = "<group>"; };
+		9264A0C020688ECA00FAF90C /* 13n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13n.png; sourceTree = "<group>"; };
 		926952E02066EAF500E5BE47 /* CallyoObjcCodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CallyoObjcCodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		926952E32066EAF500E5BE47 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		926952E42066EAF500E5BE47 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -31,6 +68,8 @@
 		926952EF2066EAF500E5BE47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		926952F12066EAF500E5BE47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		926952F22066EAF500E5BE47 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		92C4F8D42068457D003A7035 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		92C4F8D52068457D003A7035 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		BD4A0778F36DADA4120D25DA /* Pods-CallyoObjcCodeChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CallyoObjcCodeChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-CallyoObjcCodeChallenge/Pods-CallyoObjcCodeChallenge.release.xcconfig"; sourceTree = "<group>"; };
 		C391CB2E3D3D7811E651D587 /* libPods-CallyoObjcCodeChallenge.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CallyoObjcCodeChallenge.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -68,11 +107,31 @@
 		926952E22066EAF500E5BE47 /* CallyoObjcCodeChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				9264A0BE20688ECA00FAF90C /* 01n.png */,
+				9264A0BF20688ECA00FAF90C /* 02n.png */,
+				9264A0BA20688EC900FAF90C /* 03n.png */,
+				9264A0B920688EC900FAF90C /* 04n.png */,
+				9264A0BB20688EC900FAF90C /* 09n.png */,
+				9264A0B820688EC900FAF90C /* 10n.png */,
+				9264A0BC20688ECA00FAF90C /* 11n.png */,
+				9264A0C020688ECA00FAF90C /* 13n.png */,
+				9264A0BD20688ECA00FAF90C /* 50n.png */,
+				9264A0A620688CEB00FAF90C /* 01d.png */,
+				9264A0A920688CEC00FAF90C /* 02d.png */,
+				9264A0A720688CEB00FAF90C /* 03d.png */,
+				9264A0AD20688CEC00FAF90C /* 04d.png */,
+				9264A0AE20688CEC00FAF90C /* 09d.png */,
+				9264A0AC20688CEC00FAF90C /* 10d.png */,
+				9264A0A820688CEB00FAF90C /* 11d.png */,
+				9264A0AB20688CEC00FAF90C /* 13d.png */,
+				9264A0AA20688CEC00FAF90C /* 50d.png */,
 				926952E32066EAF500E5BE47 /* AppDelegate.h */,
 				926952E42066EAF500E5BE47 /* AppDelegate.m */,
 				926952E62066EAF500E5BE47 /* ViewController.h */,
 				926952E72066EAF500E5BE47 /* ViewController.m */,
 				92220D2B20682A7D00062F58 /* Reachability.h */,
+				92C4F8D42068457D003A7035 /* DetailViewController.h */,
+				92C4F8D52068457D003A7035 /* DetailViewController.m */,
 				92220D2C20682A7D00062F58 /* Reachability.m */,
 				926952E92066EAF500E5BE47 /* Main.storyboard */,
 				926952EC2066EAF500E5BE47 /* Assets.xcassets */,
@@ -161,9 +220,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9264A0C920688ECA00FAF90C /* 13n.png in Resources */,
+				9264A0B120688CEC00FAF90C /* 11d.png in Resources */,
+				9264A0C420688ECA00FAF90C /* 09n.png in Resources */,
+				9264A0B620688CEC00FAF90C /* 04d.png in Resources */,
 				926952F02066EAF500E5BE47 /* LaunchScreen.storyboard in Resources */,
+				9264A0B720688CEC00FAF90C /* 09d.png in Resources */,
+				9264A0C120688ECA00FAF90C /* 10n.png in Resources */,
 				926952ED2066EAF500E5BE47 /* Assets.xcassets in Resources */,
+				9264A0C220688ECA00FAF90C /* 04n.png in Resources */,
+				9264A0C520688ECA00FAF90C /* 11n.png in Resources */,
+				9264A0C620688ECA00FAF90C /* 50n.png in Resources */,
+				9264A0B420688CEC00FAF90C /* 13d.png in Resources */,
+				9264A0C720688ECA00FAF90C /* 01n.png in Resources */,
+				9264A0B320688CEC00FAF90C /* 50d.png in Resources */,
+				9264A0B020688CEC00FAF90C /* 03d.png in Resources */,
+				9264A0C820688ECA00FAF90C /* 02n.png in Resources */,
 				926952EB2066EAF500E5BE47 /* Main.storyboard in Resources */,
+				9264A0B220688CEC00FAF90C /* 02d.png in Resources */,
+				9264A0C320688ECA00FAF90C /* 03n.png in Resources */,
+				9264A0AF20688CEC00FAF90C /* 01d.png in Resources */,
+				9264A0B520688CEC00FAF90C /* 10d.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92C4F8D62068457D003A7035 /* DetailViewController.m in Sources */,
 				926952E82066EAF500E5BE47 /* ViewController.m in Sources */,
 				926952F32066EAF500E5BE47 /* main.m in Sources */,
 				92220D2D20682A7D00062F58 /* Reachability.m in Sources */,
